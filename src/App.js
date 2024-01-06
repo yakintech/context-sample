@@ -6,6 +6,9 @@ import FavoritesPage from './pages/FavoritesPage'
 import { FavoritesContext } from './context/FavoritesContext'
 import Cart from './pages/Cart'
 import { CartContext } from './context/CartContext'
+import UserListPage from './pages/UserListPage'
+import AddUser from './pages/AddUser'
+
 
 function App() {
 
@@ -32,6 +35,8 @@ function App() {
             : <></>
         }
       </Link>
+      <Link to="/userlist">UserList</Link>
+      <Link to="/adduser">AddUser</Link>
     </ul>
 
     <Routes>
@@ -39,6 +44,8 @@ function App() {
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
       <Route path='/cart' element={<Cart />} />
+      <Route path='/userlist' element={<UserListPage />} />
+      <Route path='/adduser' element={<AddUser />} />
       <Route path="*" element={<h1>Not Found 404</h1>} />
     </Routes>
   </>
