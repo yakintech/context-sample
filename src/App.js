@@ -4,10 +4,13 @@ import HomePage from './pages/HomePage'
 import ProductsPage from './pages/ProductsPage'
 import FavoritesPage from './pages/FavoritesPage'
 import { FavoritesContext } from './context/FavoritesContext'
+import Cart from './pages/Cart'
+import { CartContext } from './context/CartContext'
 
 function App() {
 
   const { favorites } = useContext(FavoritesContext)
+  const { cart } = useContext(CartContext)
 
 
   return (<>
@@ -22,12 +25,21 @@ function App() {
         }
 
       </Link>
+      <Link to="/cart">Cart
+        {
+          cart.length > 0 ? (<span style={{ color: 'red' }}>
+            ({cart.length})</span>)
+            : <></>
+        }
+      </Link>
     </ul>
 
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/products" element={<ProductsPage />} />
       <Route path="/favorites" element={<FavoritesPage />} />
+      <Route path='/cart' element={<Cart />} />
+      <Route path="*" element={<h1>Not Found 404</h1>} />
     </Routes>
   </>
   )
