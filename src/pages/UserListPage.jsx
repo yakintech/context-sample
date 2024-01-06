@@ -4,11 +4,10 @@ import { UserListContext } from '../context/UserListContext'
 
 function UserListPage() {
 
-    const { userList, setuserList } = useContext(UserListContext)
+    const { userList, removeUser } = useContext(UserListContext)
 
-    const deleteUser = (email) => { 
-        let filteredUsers = userList.filter(u => u.email !== email)
-        setuserList(filteredUsers)
+    const deleteUser = (user) => { 
+        removeUser(user)
     }
 
     return (<>
@@ -28,7 +27,7 @@ function UserListPage() {
                     <td>{user.name}</td>
                     <td>{user.surname}</td>
                     <td>{user.email}</td>
-                    <td><button onClick={() => deleteUser(user.email)}>Delete</button></td>
+                    <td><button onClick={() => deleteUser(user)}>Delete</button></td>
                 </tr>
             ))}
         </tbody>

@@ -9,13 +9,13 @@ function AddUser() {
     const [email, setEmail] = useState("")
 
     //call context
-    const { userList, setuserList } = useContext(UserListContext)
+    const { userList, addUser } = useContext(UserListContext)
 
 
     //add to userListContext
     const add = () => {
         let newUser = { name, surname, email }
-        setuserList([...userList, newUser])
+        addUser(newUser)
 
         //empty inputs
         setName("")

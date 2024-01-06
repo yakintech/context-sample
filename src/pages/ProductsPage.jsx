@@ -8,7 +8,7 @@ function ProductsPage() {
 
     //usecontext aracılığıyla global state e bağlanıyorum
     const { favorites, setfavorites } = useContext(FavoritesContext)
-    const { cart, setcart } = useContext(CartContext)
+    const { addToCartItem } = useContext(CartContext)
 
     useEffect(() => {
         fetch('https://northwind.vercel.app/api/products')
@@ -32,24 +32,7 @@ function ProductsPage() {
     }
 
     const addToCart = (product) => {
-        let productCheck = cart.find(p => p.id === product.id)
-
-        if (productCheck) {
-            productCheck.quantity += 1
-            setcart([...cart])
-            cartStorageHelper.setCart([...cart])
-        }
-        else {
-            let cartItem = {
-                id: product.id,
-                name: product.name,
-                quantity: 1,
-                unitPrice: product.unitPrice,
-           }
-
-            setcart([...cart, cartItem])
-            cartStorageHelper.setCart([...cart, cartItem])
-        }
+        addToCartItem(product)
     }
 
 
